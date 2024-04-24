@@ -1,10 +1,14 @@
 .card{
-   
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.301);
     margin: 1vh 1vw;
     padding: 1vh 2vw;
     background-color: white;
+    max-width: 60vw;
 
    
 }
@@ -24,7 +28,7 @@
 .title{
 
     margin: 0 1vw;
-
+    color: darkblue;
 }
 
 .editButton{
@@ -40,5 +44,7 @@
 }
 
 .textBox{
- 
+    max-width: 90%;
+    overflow: hidden;
+    text-wrap: wrap;
 }

@@ -16,7 +16,7 @@
     background-color: darkblue;
 }
 
-.newCardForm h3{
+.newCardForm newCardFormTopTitle{
     color: white;
 }
 
@@ -38,6 +38,10 @@
     align-items: center;
 }
 
+.newCardFormTopTitle{
+    color: white;
+}
+
 .inputText{
     height: 4vh;
     text-align: start;
@@ -51,4 +55,8 @@
     background-color: white;
     color: darkblue;
     border-radius:5px;
+}
+
+.completedCardList{
+    border: 1px solid black;
 }

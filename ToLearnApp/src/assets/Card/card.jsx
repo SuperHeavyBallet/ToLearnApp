@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import styles from "./card.module.css"
 
 
-export default function Card( {cardTitle, cardPriority, cardText})
+export default function Card( { cardTitle, cardPriority, cardText, onRemove})
 {
 
     const [ title, setTitle] = useState(cardTitle || "Card Title");
@@ -42,9 +42,13 @@ export default function Card( {cardTitle, cardPriority, cardText})
 
     return(
         <div className={styles.card}>
+            <div className={styles.cardTopButtons}>
+            <button onClick={onRemove}>X</button>
+            <button onClick={null}>Completed</button>
+            </div>
             <div className={styles.inputEditBlock}>
             <h3 className={styles.title}>{title}</h3>
-            {/*<button className={styles.editButton} onClick={handleEditTitleClick}><h5>Edit</h5></button>*/}
+            <button className={styles.editButton} onClick={handleEditTitleClick}><h5>Edit</h5></button>
         </div>
 
             <div className={styles.inputEditBlock}>
