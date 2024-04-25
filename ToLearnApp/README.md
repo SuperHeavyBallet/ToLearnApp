@@ -14,10 +14,16 @@ TODO:
 - Design Card List
 - Design New Card Input Area
 
-- Add Completed Side List
+- `Add Completed Side List`
 - Expand Text input to seem like more text expected
 - Switch Priority Marker in card to toggle switch
 
 - Make Edit work
 
 - Change Edit button to Gear Icon
+
+- Add Date added for cards
+
+- Add Random Popup Suggesting older, High Priority Card
+- Add "Give me a Random Topic" to load a random card
+- `Add "Currently Learning" Tray to move cards into`

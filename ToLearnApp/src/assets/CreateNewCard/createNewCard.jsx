@@ -2,21 +2,30 @@ import { useEffect, useState } from "react"
 import styles from "./createNewCard.module.css"
 import Card from "../Card/card";
 import { v4 as uuidv4 } from 'uuid'; // Ensure you have `uuid` installed
+import CardTitleArray from "../CardArray.jsx/cardTitleArray";
 
 export default function CreateNewCard()
 {
-    const [ title, setTitle ] = useState("Title");
+    const [ title, setTitle ] = useState("");
+    const [ completed, setCompleted ] = useState("Not Completed");
     const [ priority, setPriority ] = useState("High");
+   
     const [ text, setText ] = useState("");
 
     const [ cards, setCards ] = useState([]);
     const [ highPriorityCards, setHighPriorityCards ] = useState([]);
     const [ lowPriorityCards, setLowPriorityCards ] = useState([]);
+    const [ completedCards, setCompletedCards ] = useState([]);
 
     function handleTitleChange(event)
     {
         setTitle(event.target.value);
 
+    }
+    
+    function handleCompletedChange(event)
+    {
+        setCompleted(event.target.value);
     }
 
     function handlePriorityChange(event)
@@ -35,18 +44,22 @@ export default function CreateNewCard()
         // Create New Card with values at time of submit
         const newCard = {
             id: uuidv4(),
+            completed,
             title,
             priority,
             text,
         };
         //Add new card to the start of the array
         setCards(prevCards => [newCard, ...prevCards]);
-        sortPriorityCards(cards);
+        sortPriorityCards();
+        sortCompletedCards()
 
         //Reset values for next card
         setTitle("");
+        setCompleted("Not Completed");
         setPriority("High");
         setText("");
+        console.log(newCard);
 
         
     }
@@ -54,6 +67,7 @@ export default function CreateNewCard()
 
     useEffect(() => {
         sortPriorityCards();
+        sortCompletedCards();
     }, [cards]);
 
     function sortPriorityCards()
@@ -63,6 +77,13 @@ export default function CreateNewCard()
 
         setHighPriorityCards(newHighPriorityCards);
         setLowPriorityCards(newLowPriorityCards);
+    }
+
+    function sortCompletedCards()
+    {
+        const completedCards = cards.filter(card => card.completed === "Completed");
+        setCompletedCards(completedCards);
+    
     }
 
     function removeCard(cardId)
@@ -79,18 +100,14 @@ export default function CreateNewCard()
             <div className={styles.listOfCards}>
                 High Priority:
 
-                {highPriorityCards.map((card) => (
-                    <div key={card.id}>
-                        <h4>{card.title}</h4>
-                        </div>
-                    ))}
+                <CardTitleArray inputArray={highPriorityCards}/>
 
                 Low Priority:
-                {lowPriorityCards.map((card) => (
-                    <div key={card.id}>
-                        <h4>{card.title}</h4>
-                        </div>
-                    ))}
+                <CardTitleArray inputArray={lowPriorityCards}/>
+
+
+                
+
             </div>
 
              {/* New Card Form*/}
@@ -98,7 +115,31 @@ export default function CreateNewCard()
             <h3 className={styles.newCardFormTopTitle}>I Need To Learn...</h3>
             
             <form className={styles.form}>
+                {/* Input For Title */}
                 <input type="text" name="title" placeholder="Title" value={title} onChange={handleTitleChange}></input>
+                
+                 {/* Input For Completed */}
+                 <div>
+                    <label>
+                        <input 
+                            type="radio" 
+                            name="completeStatus" 
+                            value="Completed" 
+                            onChange={handleCompletedChange} 
+                            checked={completed === 'Completed'}/>
+                        Completed
+                    </label>
+                    <label>
+                        <input 
+                            type="radio" 
+                            name="completeStatus" 
+                            value="Not Completed" 
+                            onChange={handleCompletedChange} 
+                            checked={completed === 'Not Completed'}/>
+                        Not Completed
+                    </label>
+
+                </div>
                 {/* Radio buttons for Priority */}
                 <div>
                     <label>
@@ -143,6 +184,7 @@ export default function CreateNewCard()
                     {cards.map((card, index) => (
                         <Card 
                         key={card.id}
+                        cardCompleted={card.completed}
                         cardTitle={card.title}
                         cardPriority={card.priority}
                         cardText={card.text}
@@ -151,12 +193,21 @@ export default function CreateNewCard()
                             />
                     ))}
                 </div>
+
+                
                          
+        </div>
+
+        <div>
+            Currently Learning
         </div>
 
         {/* Completed Card List*/}
         <div className={styles.completedCardList}>
                             Completed
+
+                            <CardTitleArray inputArray={completedCards}/>
+
                          </div>
         </div>
     )

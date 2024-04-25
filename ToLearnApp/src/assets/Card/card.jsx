@@ -3,9 +3,11 @@ import { useEffect, useState } from "react"
 import styles from "./card.module.css"
 
 
-export default function Card( { cardTitle, cardPriority, cardText, onRemove})
+export default function Card( { cardCompleted, cardTitle, cardPriority, cardText, onRemove})
 {
 
+
+    const [ completedStatus, setCompletedStatus ]= useState(cardCompleted);
     const [ title, setTitle] = useState(cardTitle || "Card Title");
     const [priority, setPriority] = useState(cardPriority || "Low");
 
@@ -38,13 +40,31 @@ export default function Card( { cardTitle, cardPriority, cardText, onRemove})
         }
     }
     
+    function handleCompletedClick(event)
+    {
+
+
+        if (completedStatus == "Not Completed")
+        {
+            
+            setCompletedStatus("Completed");
+        }
+        else
+        {
+   
+            setCompletedStatus("Not Completed");
+        }
+
+
+    }
   
 
     return(
         <div className={styles.card}>
             <div className={styles.cardTopButtons}>
             <button onClick={onRemove}>X</button>
-            <button onClick={null}>Completed</button>
+            <button onClick={handleCompletedClick}>
+                {completedStatus}</button>
             </div>
             <div className={styles.inputEditBlock}>
             <h3 className={styles.title}>{title}</h3>
