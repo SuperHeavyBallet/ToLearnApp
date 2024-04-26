@@ -23,6 +23,7 @@
     border: 1px solid darkblue;
     border-radius: 6px;
     width: 100%;
+    
 }
 
 .title{
@@ -41,8 +42,17 @@
 
 .editButton h5{
     margin: 0;
+   
 }
 
+
+.editCog{
+    max-height: 24px ;
+    color: #00008b;
+}
+.editCog:hover{
+    cursor: pointer;
+}
 .textBox{
     max-width: 90%;
     overflow: hidden;

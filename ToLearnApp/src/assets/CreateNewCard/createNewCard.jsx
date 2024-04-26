@@ -181,6 +181,9 @@ export default function CreateNewCard()
 
                 {/* Render Each Card */}
                 <div className="">
+
+                    {/*Sample Card */}
+                    <Card></Card>
                     {cards.map((card, index) => (
                         <Card 
                         key={card.id}
@@ -201,11 +204,13 @@ export default function CreateNewCard()
         <div>
             Currently Learning
         </div>
-
+                        
+                        
         {/* Completed Card List*/}
         <div className={styles.completedCardList}>
                             Completed
-
+                            
+                            {/*All Cards */}
                             <CardTitleArray inputArray={completedCards}/>
 
                          </div>

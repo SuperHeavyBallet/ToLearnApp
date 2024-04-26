@@ -20,7 +20,7 @@ TODO:
 
 - Make Edit work
 
-- Change Edit button to Gear Icon
+- `Change Edit button to Gear Icon`
 
 - Add Date added for cards
 
