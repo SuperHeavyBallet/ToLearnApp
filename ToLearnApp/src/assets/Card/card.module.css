@@ -16,12 +16,11 @@
 .inputEditBlock{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0;
     margin: 1vh;
-    border: 1px solid darkblue;
-    border-radius: 6px;
+
     width: 100%;
     
 }
@@ -52,6 +51,17 @@
 }
 .editCog:hover{
     cursor: pointer;
+}
+
+.prioritySwitch{
+    display: flex;
+    flex-direction: row;
+}
+.priorityButton{
+    margin: 0;
+    padding: 0.2rem;
+    width: 5rem;
+    border: 1px solid black;
 }
 .textBox{
     max-width: 90%;

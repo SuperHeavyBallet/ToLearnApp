@@ -84,6 +84,20 @@ export default function CreateNewCard()
         setCompletedCards(completedCards);
     }
 
+    function changePriorityStatus(cardId, card, priorityLevel){
+        const id = cardId;
+
+        const currentCardToChange = cards.filter(card => card.id === id);
+        if (currentCardToChange[0]){
+            if (currentCardToChange[0].priority === "High" && priorityLevel !== "High"){
+                currentCardToChange[0].priority = "Low";
+            }else if (priorityLevel !== "Low"){
+                currentCardToChange[0].priority = "High";
+            }
+        }
+
+        sortPriorityCards();
+    }
     {/* Callback Functions on Cards Already Made */}
     function changeCompletedStatus(cardId, card){
         let id = cardId;
@@ -100,6 +114,15 @@ export default function CreateNewCard()
         }
        
         sortCompletedCards();
+    }
+
+    function changeTitle(cardId, newTitle){
+        
+        setCards(prevCards => 
+            prevCards.map(card => 
+                card.id === cardId ? { ...card, title: newTitle } : card
+            )
+        );
     }
 
     function removeCard(cardId){
@@ -201,9 +224,13 @@ export default function CreateNewCard()
                         timeCreated={card.time}
                         cardCompleted={card.completed}
                         cardTitle={card.title}
+                        onChangeTitle={(newTitle) => changeTitle(card.id, newTitle)}
                         cardPriority={card.priority}
                         cardText={card.text}
                         onRemove={() => removeCard(card.id)}
+                        onChangePriority={(priorityLevel) =>
+                            changePriorityStatus(card.id, card, priorityLevel)
+                        }
                         onChangeCompleted={() => 
                             changeCompletedStatus(card.id, card)
                         }

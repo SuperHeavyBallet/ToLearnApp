@@ -16,9 +16,13 @@ TODO:
 
 - `Add Completed Side List`
 - `Expand Text input to seem like more text expected`
-- Switch Priority Marker in card to toggle switch
+- `Switch Priority Marker in card to toggle switch`
+- `Prevent double clicking of one priority switch`
 
-- Make Edit work
+- `Make Edit work`
+-  `Fix edit to have placeholder of previous title`
+- Fix edit to revert to previous title on move away without entering
+- `Make Priority Change Work`
 
 - `Change Edit button to Gear Icon`
 
