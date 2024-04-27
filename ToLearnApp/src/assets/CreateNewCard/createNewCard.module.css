@@ -23,6 +23,7 @@
 .newCardForm input{
     border-radius: 5px;
     padding: 1vh;
+    margin: 1vh;
     
 }
 
@@ -42,11 +43,33 @@
     color: white;
 }
 
+.newCardFormLowTitle{
+    color: white;
+    margin: 1vh;
+}
+
+.inputRow{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+}
+
+.inputColumn{
+    display: flex;
+    flex-direction: column;
+}
+
 .inputText{
     height: 4vh;
     text-align: start;
     justify-content: start;
     align-items: center;
+    padding: 1vh;
+    height: fit-content;
+  
 }
 
 .submitButton{

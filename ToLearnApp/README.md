@@ -10,19 +10,21 @@ Currently, two official plugins are available:
 
 TODO:
 
-- Make Delete Card Work
+- `Make Delete Card Work`
 - Design Card List
 - Design New Card Input Area
 
 - `Add Completed Side List`
-- Expand Text input to seem like more text expected
+- `Expand Text input to seem like more text expected`
 - Switch Priority Marker in card to toggle switch
 
 - Make Edit work
 
 - `Change Edit button to Gear Icon`
 
-- Add Date added for cards
+- `Add Date added for cards`
+- Time is being set as the time at the last card being added, update time
+capture point to time at hitting submit
 
 - Add Random Popup Suggesting older, High Priority Card
 - Add "Give me a Random Topic" to load a random card
