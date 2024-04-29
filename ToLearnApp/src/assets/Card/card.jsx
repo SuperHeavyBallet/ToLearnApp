@@ -43,6 +43,10 @@ export default function Card( { timeCreated, cardCompleted, cardTitle, cardPrior
             onChangeTitle(title);
         }
     }
+    function handleTitleBlur(event)
+    {
+        setIsEditingTitle(false);
+    }
 
     function handleEditPriorityClick(event)
     {
@@ -99,6 +103,7 @@ export default function Card( { timeCreated, cardCompleted, cardTitle, cardPrior
                         placeholder={title}
                         onChange={handleTitleChange}
                         onKeyDown={handleTitleSubmit}
+                        onBlur={handleTitleBlur}
                         autoFocus
                         />
                 ) : (
