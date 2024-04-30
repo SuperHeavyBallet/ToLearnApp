@@ -18,7 +18,7 @@ export default function CreateNewCard()
     const [ lowPriorityCards, setLowPriorityCards ] = useState([]);
     const [ completedCards, setCompletedCards ] = useState([]);
 
-    const [ randomCard, setRandomCard ] = useState({});
+    const [ randomCard, setRandomCard ] = useState([]);
 
     useEffect(() => {
         getTime();
@@ -136,12 +136,19 @@ export default function CreateNewCard()
 
     function returnRandomCard(event){
 
-        const randomNumber = Math.random(0, completedCards.length);
-        const randomCardPick = completedCards[randomNumber];
+        if (cards.length > 0)
+        {
+
+            
+            setRandomCard([]);
+
+            const randomNumber = Math.floor(Math.random() * cards.length);
+            const randomCardPick = cards[randomNumber];
 
 
-        setRandomCard(randomCardPick);
-        console.log(randomCardPick);
+            setRandomCard([randomCardPick]);
+            console.log(randomCardPick);
+        }
 
 
     }
@@ -152,11 +159,11 @@ export default function CreateNewCard()
 
             {/* Priority List*/}
             <div className={styles.listOfCards}>
-                <h4>High Priority:</h4>
                 
-                <CardTitleArray inputArray={highPriorityCards}/>
-                <h4>Low Priority:</h4>
-                <CardTitleArray inputArray={lowPriorityCards}/>
+                
+                <CardTitleArray listTitle={"High Priority"} inputArray={highPriorityCards}/>
+                
+                <CardTitleArray listTitle={"Low Priority"} inputArray={lowPriorityCards}/>
             </div>
 
             {/* New Card Form*/}
@@ -257,24 +264,24 @@ export default function CreateNewCard()
                 </div>
 
         {/* Return Random Card*/}
-        <div className={styles.completedCardList}>
-        <div>
-            <h4>Random Card</h4>
+        <div className={styles.randomCardList}>
+            <div>
+                <CardTitleArray listTitle={"Random Card"} inputArray={randomCard}/>
+                <button onClick={returnRandomCard}>Pick a Card</button>
+            </div>
         </div>
-            <button onClick={returnRandomCard}>Pick a Card</button>
-
-            
-        </div>
+        
         {/* Currently Learning List*/}
         <div className={styles.completedCardList}>
-            <h4>Currently Learning</h4>
+            
+            <CardTitleArray listTitle={"Currently Learning"} inputArray={completedCards}/>
         </div>
              
         {/* Completed Card List*/}
         <div className={styles.completedCardList}>
-            <h4>Completed</h4>       
+            
             {/*All Cards */}
-            <CardTitleArray inputArray={completedCards}/>
+            <CardTitleArray listTitle={"Completed"} inputArray={completedCards}/>
         </div>
 
     </div>

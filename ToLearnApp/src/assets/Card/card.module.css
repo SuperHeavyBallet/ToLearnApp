@@ -6,10 +6,23 @@
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.301);
     margin: 1vh 1vw;
-    padding: 1vh 2vw;
+    
     background-color: white;
     max-width: 20vw;
+    width: 300px;
 
+   
+}
+
+.cardTopSection{
+    background-color: black;
+    width: 100%;
+    margin: 0 0 1rem 0;
+    padding: 0;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
    
 }
 
@@ -25,32 +38,51 @@
     
 }
 
+.deleteButton{
+    color: #000000;
+    font-weight: bolder;
+    background-color: #ff0000;
+    border-radius: 10px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.2rem 0.5rem;
+}
+
+.deleteButton:hover{
+    cursor: pointer;
+    background-color: white;
+    color: red;
+}
+
+.titleInput{
+    max-width: 100%;
+    text-align: center;
+}
 .title{
 
-    margin: 0 1vw;
+    margin: 0 0;
+    padding: 0.7rem 0.5rem;
     color: darkblue;
-}
-
-.editButton{
-    
-    height: auto;
-    background-color: darkblue;
     color: white;
-    border-radius: 0 5px 5px 0;
-}
-
-.editButton h5{
-    margin: 0;
-   
+    
+    
 }
 
 
 .editCog{
+    display: block;
     max-height: 24px ;
-    color: #00008b;
+    color: #ffffff;
+    padding: 0.2rem 0.5rem;
+    min-width:25px;
+
 }
 .editCog:hover{
     cursor: pointer;
+}
+.editCogEditing{
+    display: none;
 }
 
 .prioritySwitch{
