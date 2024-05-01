@@ -3,6 +3,7 @@ import styles from "./createNewCard.module.css"
 import Card from "../Card/card";
 import { v4 as uuidv4 } from 'uuid'; // Ensure you have `uuid` installed
 import CardTitleArray from "../CardArray.jsx/cardTitleArray";
+import RandomCardGenerator from "../Card/RandomCardGenerator/randomCardGenerator";
 
 export default function CreateNewCard()
 {
@@ -265,12 +266,12 @@ export default function CreateNewCard()
 
         {/* Return Random Card*/}
         <div className={styles.randomCardList}>
-            <div>
-                <CardTitleArray listTitle={"Random Card"} inputArray={randomCard}/>
-                <button onClick={returnRandomCard}>Pick a Card</button>
-            </div>
+
+
+                <RandomCardGenerator listTitle={"Random Card"} inputArray={cards}></RandomCardGenerator>
+            
         </div>
-        
+
         {/* Currently Learning List*/}
         <div className={styles.completedCardList}>
             
