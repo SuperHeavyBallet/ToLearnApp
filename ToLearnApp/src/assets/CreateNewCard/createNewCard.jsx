@@ -167,6 +167,13 @@ export default function CreateNewCard()
                 <CardTitleArray listTitle={"Low Priority"} inputArray={lowPriorityCards}/>
             </div>
 
+             {/* Completed Card List*/}
+            <div className={styles.completedCardList}>
+                
+                {/*All Cards */}
+                <CardTitleArray listTitle={"Completed"} inputArray={completedCards}/>
+            </div>
+
             {/* New Card Form*/}
             <div className={styles.newCardForm}>
                 <h3 className={styles.newCardFormTopTitle}>I Need To Learn...</h3>
@@ -278,12 +285,7 @@ export default function CreateNewCard()
             <CardTitleArray listTitle={"Currently Learning"} inputArray={completedCards}/>
         </div>
              
-        {/* Completed Card List*/}
-        <div className={styles.completedCardList}>
-            
-            {/*All Cards */}
-            <CardTitleArray listTitle={"Completed"} inputArray={completedCards}/>
-        </div>
+       
 
     </div>
     )

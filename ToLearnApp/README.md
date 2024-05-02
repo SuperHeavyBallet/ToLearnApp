@@ -9,16 +9,24 @@ Currently, two official plugins are available:
 
 
 Today todo:
-- Create new Random Card Generator compnent with built in button + call
-back function or function within that just uses the given array
+- Adjust Completed/Not Completed to something more logical, maybe 'learnt' / 'still learning'
+- Design New Card Input Area
+- Refactor component heirarchy to seperate elements from within CreateNew Card
+- Priority needs a component
+- Completed needs a component
+- Cards needs a component
+- Random needs a component
+- Current needs a component
 
 TODO:
 
 
 - `Make Delete Card Work`
 
-- Design New Card Input Area
 
+
+- `Create new Random Card Generator compnent with built in button + call`
+`back function or function within that just uses the given array`
 - `Add Completed Side List`
 - `Expand Text input to seem like more text expected`
 - `Switch Priority Marker in card to toggle switch`
@@ -40,5 +48,5 @@ capture point to time at hitting submit
 `Design Card List`
 - `Add "Give me a Random Topic" to load a random card`
 
-- Adjust Completed/Not Completed to something more logical, maybe 'learnt' / 'still learning'
+
 

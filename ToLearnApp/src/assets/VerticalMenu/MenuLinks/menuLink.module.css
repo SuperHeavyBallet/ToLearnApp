@@ -1,0 +1,35 @@
+:root{
+    --primaryColor: #ffffff;
+    --secondaryColor: #000000;
+    --variantColor: #dededf;
+    
+}
+
+.linkLine a{
+    margin: 0;
+    padding: 1vh 0 1vh 1vw;
+    color: var(--primaryColor);
+    display: flex;
+    flex-direction: row;
+
+}
+
+.linkLine svg{
+    color: var(--primaryColor);
+    padding-right: 0.5vw;
+
+        filter: drop-shadow(1px 1px 1px 1px var(--primaryColor));  /* Adjust values as needed */
+
+}
+
+
+
+.linkLine:hover{
+    background-color: var(--primaryColor);
+    color: var(--secondaryColor);
+}
+
+.linkLine:hover a,
+.linkLine:hover svg {
+    color: var(--secondaryColor); 
+}

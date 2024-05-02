@@ -1,0 +1,32 @@
+:root{
+    --primaryColor: #ffffff;
+    --secondaryColor: #000000;
+    --variantColor: #dededf;
+    
+}
+
+.verticalMenu{
+
+    width: 200px;
+    border-right: 1px solid var(--secondaryColor);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    
+    background-color: var(--secondaryColor);
+}
+
+.menuSection{
+    padding-bottom: 2vh;
+    border-bottom: 1px solid var(--variantColor);
+}
+
+.menuSection h3{
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--variantColor);
+}

@@ -1,0 +1,30 @@
+:root{
+    --topNavBarHeight: 40px;
+}
+
+.allContent{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh ;
+}
+
+.topNavBar{
+    display: flex;
+    flex-direction: column;
+    height: var(--topNavBarHeight);
+}
+
+.mainBody{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100vw;
+    background-color: aqua ;
+    height: calc(100vh - var(--topNavBarHeight));
+}

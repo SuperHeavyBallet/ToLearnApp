@@ -1,0 +1,12 @@
+:root{
+    --primaryColor: #ffffff;
+    --secondaryColor: #000000;
+    
+}
+
+.linkElement{
+    margin: 0 2vw ;
+    padding: 0.5vh 1vw;
+    border-left: 1px solid var(--secondaryColor);
+    border-right: 1px solid var(--secondaryColor);
+}
