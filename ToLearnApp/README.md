@@ -10,6 +10,10 @@ Currently, two official plugins are available:
 
 Today todo:
 - Adjust Completed/Not Completed to something more logical, maybe 'learnt' / 'still learning'
+
+^^ Add Tick box on each card, on tick move to completed, add X box in completed section for each card
+
+
 - Design New Card Input Area
 - Refactor component heirarchy to seperate elements from within CreateNew Card
 - Priority needs a component
@@ -17,6 +21,8 @@ Today todo:
 - Cards needs a component
 - Random needs a component
 - Current needs a component
+
+- On Remove Card > Remove from All Arrays
 
 TODO:
 

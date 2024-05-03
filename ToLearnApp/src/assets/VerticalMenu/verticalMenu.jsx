@@ -2,7 +2,12 @@ import MenuLink from "./MenuLinks/menuLink";
 import style from "./verticalMenu.module.css"
 import VerticalMenuList from "./VerticalMenuList/verticalMenuList";
 
-export default function VerticalMenu()
+export default function VerticalMenu(
+    {
+        highPriorityCards,
+        lowPriorityCards,
+    }
+)
 {
     return(
         <div className={style.verticalMenu}>
@@ -15,7 +20,15 @@ export default function VerticalMenu()
             </div>
             <div className={style.menuSection}>
             
-            <VerticalMenuList listTitle="High Priority" listArray={["Card", "Card1"]}/>
+            <VerticalMenuList 
+
+                listTitle="High Priority" 
+                listArray={highPriorityCards}
+            />
+            <VerticalMenuList 
+                listTitle="Low Priority" 
+                listArray={lowPriorityCards}
+            />
             </div>
         </div>
     )

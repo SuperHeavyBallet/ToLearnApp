@@ -1,3 +1,5 @@
+import styles from "./verticalMenuList.module.css"
+
 export default function VerticalMenuList( { listTitle, listArray } )
 {
     return(
@@ -7,7 +9,7 @@ export default function VerticalMenuList( { listTitle, listArray } )
                 {listArray.map((card, index) => (
                     <h3
                         key={index}
-                    >{card}</h3>
+                    >{card.title}</h3>
                 ))}
             </div>
         </div>

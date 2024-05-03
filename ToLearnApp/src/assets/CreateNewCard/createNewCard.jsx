@@ -5,7 +5,11 @@ import { v4 as uuidv4 } from 'uuid'; // Ensure you have `uuid` installed
 import CardTitleArray from "../CardArray.jsx/cardTitleArray";
 import RandomCardGenerator from "../Card/RandomCardGenerator/randomCardGenerator";
 
-export default function CreateNewCard()
+export default function CreateNewCard( {
+    onNewCard, 
+    onChangeCompleted,
+    onChangePriority, 
+    onRemoveCard})
 {
     const [ title, setTitle ] = useState("");
     const [ time, setTime ] = useState("");
@@ -55,6 +59,8 @@ export default function CreateNewCard()
             text,
         };
 
+        onNewCard(newCard);
+
         //Add new card to the start of the array
         setCards(prevCards => [newCard, ...prevCards]);
         sortPriorityCards();
@@ -100,9 +106,10 @@ export default function CreateNewCard()
             }
         }
 
+        onChangePriority(cardId, priorityLevel);
+
         sortPriorityCards();
-        console.log("Low" + lowPriorityCards);
-        console.log("High" + highPriorityCards)
+
     }
     {/* Callback Functions on Cards Already Made */}
     function changeCompletedStatus(cardId, card){
@@ -118,6 +125,8 @@ export default function CreateNewCard()
                 currentCardToChange[0].completed = "Not Completed";
             }
         }
+
+        onChangeCompleted(cardId, card);
        
         sortCompletedCards();
     }
@@ -133,6 +142,7 @@ export default function CreateNewCard()
 
     function removeCard(cardId){
         setCards(prevCards => prevCards.filter(card => card.id !== cardId));
+        onRemoveCard(cardId);
     }
 
     function returnRandomCard(event){
@@ -157,15 +167,15 @@ export default function CreateNewCard()
 
     return (
         <div className={styles.wholePage}>
-
-            {/* Priority List*/}
+            
+            {/* Priority List*
             <div className={styles.listOfCards}>
                 
                 
                 <CardTitleArray listTitle={"High Priority"} inputArray={highPriorityCards}/>
                 
                 <CardTitleArray listTitle={"Low Priority"} inputArray={lowPriorityCards}/>
-            </div>
+            </div>*/}
 
              {/* Completed Card List*/}
             <div className={styles.completedCardList}>

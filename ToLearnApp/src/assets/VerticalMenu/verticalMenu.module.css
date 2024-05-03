@@ -30,3 +30,7 @@
     align-items: center;
     color: var(--variantColor);
 }
+
+.highPriority{
+    color: red;
+}

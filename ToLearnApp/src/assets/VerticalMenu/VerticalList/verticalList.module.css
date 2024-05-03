@@ -1,0 +1,23 @@
+.verticalList{
+    background-color: rgb(214, 214, 214);
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    height: 100%;
+    padding: 0;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+.verticalList h3{
+    justify-self: center;
+    align-self: center;
+    
+    color: white;
+    padding: 1vh 1vw;
+}
