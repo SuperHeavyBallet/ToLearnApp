@@ -1,4 +1,5 @@
 import styles from "./verticalList.module.css"
+import ListElementPreview from "./listElementPreview/listElementPreview"
 
 export default function VerticalList({listTitle, inputArray})
 {
@@ -12,11 +13,10 @@ export default function VerticalList({listTitle, inputArray})
             <div>
                 {inputArray.map((element, index) => (
 
-                    <h3
-                    key={index}>
-                    
-                        {element.title}
-                    </h3>
+                <ListElementPreview 
+                    key={index}
+                    elementTitle={element.title}
+                />
                 ))
                     
                 }

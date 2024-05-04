@@ -57,6 +57,7 @@ export default function CreateNewCard( {
             title,
             priority,
             text,
+
         };
 
         onNewCard(newCard);
@@ -113,11 +114,10 @@ export default function CreateNewCard( {
     }
     {/* Callback Functions on Cards Already Made */}
     function changeCompletedStatus(cardId, card){
-        let id = cardId;
 
-        console.log("Card: " + card)
+
         
-        const currentCardToChange = cards.filter(card => card.id === id);
+        const currentCardToChange = cards.filter(card => card.id === cardId);
         if (currentCardToChange[0]){
             if (currentCardToChange[0].completed === "Not Completed"){
                 currentCardToChange[0].completed = "Completed";
@@ -130,6 +130,7 @@ export default function CreateNewCard( {
        
         sortCompletedCards();
     }
+
 
     function changeTitle(cardId, newTitle){
         
@@ -175,14 +176,15 @@ export default function CreateNewCard( {
                 <CardTitleArray listTitle={"High Priority"} inputArray={highPriorityCards}/>
                 
                 <CardTitleArray listTitle={"Low Priority"} inputArray={lowPriorityCards}/>
-            </div>*/}
+            </div>
 
-             {/* Completed Card List*/}
+             {/* Completed Card List
             <div className={styles.completedCardList}>
                 
-                {/*All Cards */}
+                {/*All Cards 
                 <CardTitleArray listTitle={"Completed"} inputArray={completedCards}/>
             </div>
+            */}
 
             {/* New Card Form*/}
             <div className={styles.newCardForm}>
@@ -277,23 +279,18 @@ export default function CreateNewCard( {
                         onChangeCompleted={() => 
                             changeCompletedStatus(card.id, card)
                         }
+                        
                         />
                     ))}
                 </div>
 
-        {/* Return Random Card*/}
+        {/* Return Random Card
         <div className={styles.randomCardList}>
 
 
                 <RandomCardGenerator listTitle={"Random Card"} inputArray={cards}></RandomCardGenerator>
             
-        </div>
-
-        {/* Currently Learning List*/}
-        <div className={styles.completedCardList}>
-            
-            <CardTitleArray listTitle={"Currently Learning"} inputArray={completedCards}/>
-        </div>
+        </div>*/}
              
        
 

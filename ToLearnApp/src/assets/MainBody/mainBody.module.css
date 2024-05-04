@@ -28,3 +28,9 @@
     background-color: aqua ;
     height: calc(100vh - var(--topNavBarHeight));
 }
+
+.multiVerticalMenu{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}

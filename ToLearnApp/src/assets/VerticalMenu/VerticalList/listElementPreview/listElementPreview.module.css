@@ -1,0 +1,10 @@
+:root{
+    --primaryColor: #ffffff;
+    --secondaryColor: #000000;
+    --variantColor: #dededf;
+    
+}
+
+.listElement{
+    border: 1px solid var(--secondaryColor);
+}

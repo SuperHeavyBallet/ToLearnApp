@@ -3,7 +3,16 @@ import { useEffect, useState } from "react"
 import styles from "./card.module.css"
 
 
-export default function Card( { timeCreated, cardCompleted, cardTitle, cardPriority, cardText, onRemove, onChangeTitle, onChangeCompleted, onChangePriority, onWorkingOnIt})
+export default function Card( { 
+    timeCreated, 
+    cardCompleted, 
+    cardTitle, 
+    cardPriority, 
+    cardText, 
+    onRemove, 
+    onChangeTitle, 
+    onChangeCompleted, 
+    onChangePriority,})
 {
 
 
@@ -154,7 +163,6 @@ export default function Card( { timeCreated, cardCompleted, cardTitle, cardPrior
                
                 <button onClick={handleCompletedClick}>
                     {completedStatus}</button>
-                <button onClick={onWorkingOnIt}>Working On It</button>
             </div>
             {/*++++++++++++++*/}
 

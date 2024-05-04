@@ -4,6 +4,7 @@ import TopNavBar from "../TopNavBar/topNavBar";
 import VerticalMenu from "../VerticalMenu/verticalMenu";
 import styles from "./mainBody.module.css";
 import VerticalList from "../VerticalMenu/VerticalList/verticalList";
+import RandomCardGenerator from "../Card/RandomCardGenerator/randomCardGenerator";
 
 export default function MainPage(){
 
@@ -31,15 +32,16 @@ export default function MainPage(){
     function handleCompletedChange(cardId, card)
     {
         console.log("GOT HERE!!");
+        
 
         const currentCardToChange = currentCards.filter(card => card.id === cardId);
         if (currentCardToChange[0])
         {
-            if(currentCardToChange[0].completed === false)
+            if(currentCardToChange[0].completed === 'Completed')
             {
                 setCompletedCards(prevCards => [currentCardToChange[0], ...prevCards]);
             }
-            else if (currentCardToChange[0].completed === true)
+            else if (currentCardToChange[0].completed === 'Not Completed')
             {
                 setCompletedCards(prevCards => prevCards.filter(card => card.id !== cardId));
             }
@@ -101,6 +103,19 @@ export default function MainPage(){
                     listTitle="Completed Cards"
                     inputArray={completedCards}
                 />
+                <div className={styles.multiVerticalMenu}>
+                
+                
+                <VerticalList
+                    listTitle="Random Card 1"
+                    inputArray={completedCards}
+                />
+                <RandomCardGenerator 
+                    listTitle="Random Button"
+                    inputArray={currentCards}
+                />
+              
+                </div>
             </div>
         </div>
     )
