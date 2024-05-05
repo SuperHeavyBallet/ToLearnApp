@@ -2,6 +2,10 @@ import MenuLink from "./MenuLinks/menuLink";
 import style from "./verticalMenu.module.css"
 import VerticalMenuList from "./VerticalMenuList/verticalMenuList";
 
+//Left Side Outer Menu - Contains Different Categories of Lists and
+// Displays High and Low Priority Cards for the current list
+
+
 export default function VerticalMenu(
     {
         highPriorityCards,

@@ -9,6 +9,9 @@ Currently, two official plugins are available:
 
 
 Today todo:
+- Converge Random Button/Random card area - Button Seperate, Display Card in
+card area
+- Completed status on creation not auto sorting to Completed card section
 - Adjust Completed/Not Completed to something more logical, maybe 'learnt' / 'still learning'
 
 ^^ Add Tick box on each card, on tick move to completed, add X box in completed section for each card
@@ -22,7 +25,7 @@ Today todo:
 - Random needs a component
 - Current needs a component
 
-- On Remove Card > Remove from All Arrays
+- `On Remove Card > Remove from All Arrays`
 
 TODO:
 
