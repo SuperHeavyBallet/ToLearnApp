@@ -2,7 +2,7 @@ import { useState } from "react"
 import styles from "./randomCardGenerator.module.css"
 
 
-export default function RandomCardGenerator( {listTitle, inputArray})
+export default function RandomCardGenerator( {listTitle, inputArray, onRandomCardGenerated})
 {
 
     const [ randomCard, setRandomCard ] = useState([]);
@@ -17,6 +17,7 @@ export default function RandomCardGenerator( {listTitle, inputArray})
             const randomCardPick = inputArray[randomNumber];
 
             setRandomCard([randomCardPick]);
+            onRandomCardGenerated(randomCardPick);
         }
         
 
@@ -25,19 +26,10 @@ export default function RandomCardGenerator( {listTitle, inputArray})
     }
     return (
         <div className={styles.list}>
-            <h4 >{listTitle}</h4>
-            <div>
-            {randomCard.map((card) => (
-                <div
-                key={card.id}>
-                    <h4 className={styles.listElementTitle}>{card.title}</h4>
 
-                
-                
-                </div>
-                
-            ))}
-            <button onClick={getRandomCard}>Click</button>
+            <div>
+      
+            <button onClick={getRandomCard}>New Random Card</button>
                 </div>
         </div>
     )

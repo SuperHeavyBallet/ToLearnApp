@@ -33,6 +33,7 @@ export default function CreateNewCard( {
         returnRandomCard();
     }, [cards]);
 
+
     function handleTitleChange(event){
         setTitle(event.target.value);
     }
@@ -46,10 +47,11 @@ export default function CreateNewCard( {
         setText(event.target.value);
     }
     function handleSubmitNewCard(event){
+
         event.preventDefault();
         getTime();
 
-        // Create New Card with values at time of submit
+        // Create New Card with input values at time of submit
         const newCard = {
             id: uuidv4(),
             time,
@@ -57,11 +59,11 @@ export default function CreateNewCard( {
             title,
             priority,
             text,
-
         };
 
-        onNewCard(newCard);
 
+        onNewCard(newCard);
+        onChangeCompleted(newCard.id, newCard.completed)
         //Add new card to the start of the array
         setCards(prevCards => [newCard, ...prevCards]);
         sortPriorityCards();

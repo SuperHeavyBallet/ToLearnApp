@@ -10,39 +10,67 @@ export default function MainPage(){
 
     const [ currentCards, setCurrentCards ] = useState([]);
     const [ completedCards, setCompletedCards ] = useState([]);
+    const [ notCompletedCards, setNotCompletedCards ] = useState([]);
     const [ highPriorityCards, setHighPriorityCards ] = useState([]);
     const [ lowPriorityCards, setLowPriorityCards ] = useState([]);
 
+    const [ randomCard, setRandomCard ] = useState([]);
+
+    
+
     useEffect(() => {
         sortPriorityCards();
+        handleNewCard();
+        
     }, [currentCards]);
 
     function handleNewCard(newCard)
     {
-        setCurrentCards(prevCards => [newCard, ...prevCards]);
-        if (newCard.priority === 'High') {
-            setHighPriorityCards(prevCards => [newCard, ...prevCards]);
-        }
-        else if (newCard.priority === 'Low'){
-            setLowPriorityCards(prevCards => [newCard, ...prevCards]);
-        }
+        if(newCard)
+        {
+            setCurrentCards(prevCards => [newCard, ...prevCards]);
 
+            if (newCard.priority === 'High') {
+                setHighPriorityCards(prevCards => [newCard, ...prevCards]);
+            }
+            else if (newCard.priority === 'Low'){
+                setLowPriorityCards(prevCards => [newCard, ...prevCards]);
+            }
+
+            if (newCard.completed)
+            {
+
+                if (newCard.completed === "Completed")
+                {
+                    setCompletedCards(prevCards => [newCard, ...prevCards]);
+                }
+                else
+                {
+                    setNotCompletedCards(prevCards => [newCard, ...prevCards]);
+                }
+            }
+            
+            
+        }
     }
 
     function handleCompletedChange(cardId, card)
     {
-        console.log("GOT HERE!!");
         
 
         const currentCardToChange = currentCards.filter(card => card.id === cardId);
+
         if (currentCardToChange[0])
         {
+            console.log("Ready To Change");
             if(currentCardToChange[0].completed === 'Completed')
             {
                 setCompletedCards(prevCards => [currentCardToChange[0], ...prevCards]);
+                setNotCompletedCards(prevCards => prevCards.filter(card => card.id !== cardId));
             }
             else if (currentCardToChange[0].completed === 'Not Completed')
             {
+                setNotCompletedCards(prevCards => [currentCardToChange[0], ...prevCards]);
                 setCompletedCards(prevCards => prevCards.filter(card => card.id !== cardId));
             }
         }
@@ -78,6 +106,11 @@ export default function MainPage(){
         setCurrentCards(prevCards => prevCards.filter(card => card.id !== cardId));
     }
 
+    function handleNewRandomCard(newRandomCard)
+    {
+        setRandomCard([newRandomCard]);
+    }
+
     return(
         <div className={styles.allContent}>
             <div className={styles.topNavBar}>
@@ -103,16 +136,20 @@ export default function MainPage(){
                     listTitle="Completed Cards"
                     inputArray={completedCards}
                 />
+
+                <VerticalList
+                    listTitle="Not Completed Cards"
+                    inputArray={notCompletedCards}
+                />
                 <div className={styles.multiVerticalMenu}>
-                
-                
+
                 <VerticalList
                     listTitle="Random Card 1"
-                    inputArray={completedCards}
+                    inputArray={randomCard}
                 />
                 <RandomCardGenerator 
-                    listTitle="Random Button"
-                    inputArray={currentCards}
+                    inputArray={notCompletedCards}
+                    onRandomCardGenerated={(newRandomCard) => handleNewRandomCard(newRandomCard)}
                 />
               
                 </div>

@@ -11,15 +11,14 @@ export default function VerticalList({listTitle, inputArray})
 
             <div>
                 {inputArray.map((element, index) => (
-                <div className={styles.element}
+                <div
                     key={index}>
                         <ListElementPreview 
                 
+
                     elementTitle={element.title}
                 />
-                <div>
-                    Yes / No
-                    </div>
+          
                 </div>
                 ))
                 

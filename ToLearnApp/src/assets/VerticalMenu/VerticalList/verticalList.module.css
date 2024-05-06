@@ -1,7 +1,15 @@
+:root{
+    --primaryColor: #ffffff;
+    --secondaryColor: #000000;
+    --variantColor: #dededf;
+    --darkColor: #7a7a7a;
+    
+}
+
 .verticalList{
     background-color: rgb(214, 214, 214);
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    border-left: 1px solid var(--darkColor);
+    border-right: 1px solid var(--darkColor);
     height: 100%;
     padding: 0;
     width: 200px;
@@ -10,7 +18,7 @@
 }
 
 .title{
-    background-color: black;
+    background-color: var(--darkColor);
     display: flex;
     flex-direction: column;
 }

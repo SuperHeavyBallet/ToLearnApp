@@ -2,14 +2,20 @@
     --primaryColor: #ffffff;
     --secondaryColor: #000000;
     --variantColor: #dededf;
+    --darkColor: #7a7a7a;
     
 }
 
 .list{
     background-color: var(--variantColor);
     padding: 0 0 1rem 0;
-    border: 1px solid black;
+    border: 1px solid var(--darkColor);
     color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh;
 }
 
 .list > h4{
