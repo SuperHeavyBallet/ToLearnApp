@@ -27,10 +27,12 @@ export default function RandomCardGenerator( {listTitle, inputArray, onRandomCar
     return (
         <div className={styles.list}>
 
-            <div>
+          
       
-            <button onClick={getRandomCard}>New Random Card</button>
-                </div>
+            <div
+                className={styles.button} 
+                onClick={getRandomCard}>New Random Card</div>
+               
         </div>
     )
 }

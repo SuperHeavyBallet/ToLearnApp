@@ -7,15 +7,8 @@
 }
 
 .list{
-    background-color: var(--variantColor);
-    padding: 0 0 1rem 0;
-    border: 1px solid var(--darkColor);
-    color: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1vh;
+    
+   
 }
 
 .list > h4{
@@ -33,4 +26,20 @@
     margin:  0.3rem 0.5rem;
     padding: 0.3rem 0.5rem;
     color: black;
+}
+
+.button{
+    background-color: var(--primaryColor);
+    padding: 0 0 1rem 0;
+    border: 1px solid var(--darkColor);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1vh;
+}
+.button:hover{
+    cursor: pointer;
+    background-color: var(--variantColor);
 }

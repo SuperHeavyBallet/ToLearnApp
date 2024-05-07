@@ -9,6 +9,7 @@ import RandomCardGenerator from "../Card/RandomCardGenerator/randomCardGenerator
 export default function MainPage(){
 
     const [ currentCards, setCurrentCards ] = useState([]);
+
     const [ completedCards, setCompletedCards ] = useState([]);
     const [ notCompletedCards, setNotCompletedCards ] = useState([]);
     const [ highPriorityCards, setHighPriorityCards ] = useState([]);
@@ -20,15 +21,15 @@ export default function MainPage(){
 
     useEffect(() => {
         sortPriorityCards();
-        handleNewCard();
         
-    }, [currentCards]);
+    }, [currentCards, ]);
 
     function handleNewCard(newCard)
     {
         if(newCard)
         {
             setCurrentCards(prevCards => [newCard, ...prevCards]);
+
 
             if (newCard.priority === 'High') {
                 setHighPriorityCards(prevCards => [newCard, ...prevCards]);
@@ -77,6 +78,7 @@ export default function MainPage(){
 
     }
 
+
     function handlePriorityChange(cardId, priorityLevel)
     {
         
@@ -101,9 +103,23 @@ export default function MainPage(){
         setLowPriorityCards(newLowPriorityCards);
     }
 
+    function sortCompletedCards(){
+        const newCompletedCards = currentCards.filter(card => card.completed === 'Completed');
+        const newNotCompletedCards = currentCards.filter(card => card.completed !== 'Completed');
+        setCompletedCards(newCompletedCards);
+        setNotCompletedCards(newNotCompletedCards);
+    
+    }
+
     function handleRemoveCard(cardId)
     {
+        
+        
+        
+        
         setCurrentCards(prevCards => prevCards.filter(card => card.id !== cardId));
+        sortPriorityCards();
+        sortCompletedCards();
     }
 
     function handleNewRandomCard(newRandomCard)
@@ -127,24 +143,26 @@ export default function MainPage(){
                     onChangePriority={(cardId, priorityLevel) => handlePriorityChange(cardId, priorityLevel)}
                     onRemoveCard={(cardId) => handleRemoveCard(cardId)}
                     />
+
                 <VerticalList 
-                    listTitle="Current Cards"
+                    listTitle="All"
                     inputArray={currentCards}
+                    
                 />
 
                 <VerticalList
-                    listTitle="Completed Cards"
+                    listTitle="Completed"
                     inputArray={completedCards}
                 />
 
                 <VerticalList
-                    listTitle="Not Completed Cards"
+                    listTitle="Not Completed"
                     inputArray={notCompletedCards}
                 />
                 <div className={styles.multiVerticalMenu}>
 
                 <VerticalList
-                    listTitle="Random Card 1"
+                    listTitle="Random Card"
                     inputArray={randomCard}
                 />
                 <RandomCardGenerator 

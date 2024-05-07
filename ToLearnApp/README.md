@@ -2,16 +2,19 @@
 
 
 Today todo:
-- Converge Random Button/Random card area - Button Seperate, Display Card in
+
 card area
 - Generate Random Card on inital component mount
+- Design more extensive preview for random card displayed
 
-- Remove card not removing from Completed section
+
 - Adjust Completed/Not Completed to something more logical, maybe 'learnt' / 'still learning'
 
 - Add Counters for total array size in each section
 
 ^^ Add Tick box on each card, on tick move to completed, add X box in completed section for each card
+
+- Move Full Card display outside of Create New Card into seperate Component
 
 
 - Design New Card Input Area
@@ -23,6 +26,8 @@ card area
 - Current needs a component
 
 - `Completed status on creation not auto sorting to Completed card`
+- `Converge Random Button/Random card area - Button Seperate, Display Card in`
+- `Remove card not removing from Completed section`
 
 `COMPONENT DOCUMENTATION`
 

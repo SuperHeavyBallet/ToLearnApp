@@ -1,9 +1,16 @@
 import styles from "./listElementPreview.module.css"
 
-export default function ListElementPreview({elementTitle,})
+export default function ListElementPreview({elementTitle, cardDetails})
 {
+    
+    function handlePreviewClick()
+    {
+        console.log(cardDetails);
+    }
+
     return(
-        <div className={styles.elementPreview}>
+        <div className={styles.elementPreview}
+        onClick={handlePreviewClick}>
             <div className={styles.removeElement}>
                 X
             </div>

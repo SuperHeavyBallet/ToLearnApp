@@ -263,7 +263,7 @@ export default function CreateNewCard( {
                 </form>
                 </div>
 
-                {/* Render Each Card */}
+                {/* Render Each Card 
                 <div>
                     {cards.map((card) => (
                         <Card 
@@ -285,6 +285,7 @@ export default function CreateNewCard( {
                         />
                     ))}
                 </div>
+                */}
 
         {/* Return Random Card
         <div className={styles.randomCardList}>
