@@ -17,6 +17,8 @@ export default function RandomCardGenerator( {listTitle, inputArray, onRandomCar
             const randomCardPick = inputArray[randomNumber];
 
             setRandomCard([randomCardPick]);
+ 
+
             onRandomCardGenerated(randomCardPick);
         }
         
@@ -24,6 +26,8 @@ export default function RandomCardGenerator( {listTitle, inputArray, onRandomCar
 
 
     }
+
+
     return (
         <div className={styles.list}>
 

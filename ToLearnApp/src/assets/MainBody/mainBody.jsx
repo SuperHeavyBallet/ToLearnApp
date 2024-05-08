@@ -5,6 +5,7 @@ import VerticalMenu from "../VerticalMenu/verticalMenu";
 import styles from "./mainBody.module.css";
 import VerticalList from "../VerticalMenu/VerticalList/verticalList";
 import RandomCardGenerator from "../Card/RandomCardGenerator/randomCardGenerator";
+import RandomCardDisplay from "../Card/RandomCardGenerator/RandomCardDisplay/randomCardDisplay";
 
 export default function MainPage(){
 
@@ -16,7 +17,7 @@ export default function MainPage(){
     const [ lowPriorityCards, setLowPriorityCards ] = useState([]);
 
     const [ randomCard, setRandomCard ] = useState([]);
-
+    const [ randomCardTitle, setRandomCardTitle ] = useState("");
     
 
     useEffect(() => {
@@ -125,6 +126,7 @@ export default function MainPage(){
     function handleNewRandomCard(newRandomCard)
     {
         setRandomCard([newRandomCard]);
+        setRandomCardTitle(newRandomCard.title);
     }
 
     return(
@@ -165,6 +167,13 @@ export default function MainPage(){
                     listTitle="Random Card"
                     inputArray={randomCard}
                 />
+
+                <RandomCardDisplay 
+                    listTitle="Random Card"
+                    elementTitle={randomCardTitle}
+                    inputArray={randomCard}
+                />
+
                 <RandomCardGenerator 
                     inputArray={notCompletedCards}
                     onRandomCardGenerated={(newRandomCard) => handleNewRandomCard(newRandomCard)}
