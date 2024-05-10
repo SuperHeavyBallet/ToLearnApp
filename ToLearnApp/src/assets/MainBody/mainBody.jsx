@@ -22,8 +22,10 @@ export default function MainPage(){
 
     useEffect(() => {
         sortPriorityCards();
+        sortCompletedCards();
+
         
-    }, [currentCards, ]);
+    }, [currentCards,  ]);
 
     function handleNewCard(newCard)
     {
@@ -95,6 +97,7 @@ export default function MainPage(){
         }
 
         sortPriorityCards();
+        
     }
 
     function sortPriorityCards(){
@@ -116,9 +119,13 @@ export default function MainPage(){
     {
         
         
-        
+        console.log("Clicked Remove at Main Level" + cardId);
         
         setCurrentCards(prevCards => prevCards.filter(card => card.id !== cardId));
+        setCompletedCards(prevCards => prevCards.filter(card => card.id !== cardId));
+        setNotCompletedCards(prevCards => prevCards.filter(card => card.id !== cardId));
+        setHighPriorityCards(prevCards => prevCards.filter(card => card.id !== cardId));
+        setLowPriorityCards(prevCards => prevCards.filter(card => card.id !== cardId));
         sortPriorityCards();
         sortCompletedCards();
     }
@@ -127,6 +134,28 @@ export default function MainPage(){
     {
         setRandomCard([newRandomCard]);
         setRandomCardTitle(newRandomCard.title);
+
+        
+    }
+
+    function handleToggleCompleted(cardId)
+    {
+        console.log("Received Toggle at Main for: ", cardId)
+        const currentCardToChange = currentCards.filter(card => card.id === cardId);
+
+        console.log("Card to change: ", currentCardToChange[0]);
+
+        if (currentCardToChange[0].completed === "Completed")
+        {
+            currentCardToChange[0].completed = "Not Completed";
+        }
+        else
+        {
+            currentCardToChange[0].completed = "Completed";
+        }
+
+        handleCompletedChange(cardId);
+        console.log("Current: ", currentCardToChange[0]);
     }
 
     return(
@@ -149,24 +178,27 @@ export default function MainPage(){
                 <VerticalList 
                     listTitle="All"
                     inputArray={currentCards}
+                    onRemoveCard={(cardId) => handleRemoveCard(cardId)}
+                    onToggleCompleted={(cardId) => handleToggleCompleted(cardId)}
                     
                 />
 
                 <VerticalList
                     listTitle="Completed"
                     inputArray={completedCards}
+                    onRemoveCard={(cardId) => handleRemoveCard(cardId)}
+                    onToggleCompleted={(cardId) => handleToggleCompleted(cardId)}
                 />
 
                 <VerticalList
                     listTitle="Not Completed"
                     inputArray={notCompletedCards}
+                    onRemoveCard={(cardId) => handleRemoveCard(cardId)}
+                    onToggleCompleted={(cardId) => handleToggleCompleted(cardId)}
                 />
                 <div className={styles.multiVerticalMenu}>
 
-                <VerticalList
-                    listTitle="Random Card"
-                    inputArray={randomCard}
-                />
+                
 
                 <RandomCardDisplay 
                     listTitle="Random Card"

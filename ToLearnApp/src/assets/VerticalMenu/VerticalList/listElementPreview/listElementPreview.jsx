@@ -1,31 +1,73 @@
 import styles from "./listElementPreview.module.css"
+import { useState } from "react";
 
-export default function ListElementPreview({elementTitle, cardDetails})
+export default function ListElementPreview({elementTitle, cardDetails, onRemoveCard, onToggleCompleted})
 {
-    
+    const [ completedStatus, setCompletedStatus ] = useState( cardDetails.completed === "Completed" ? "N" : "Y");
+
+
     function handlePreviewClick()
     {
         console.log(cardDetails);
     }
 
+    function handleRemoveClick()
+    {
+        onRemoveCard(cardDetails.id);
+        console.log("Remove at Card Preview")
+    }
+
+    function handleCompletedClick()
+    {
+        console.log("Competed CLick ", cardDetails.id);
+        onToggleCompleted(cardDetails.id);
+        if (completedStatus === 'Y')
+        {
+            setCompletedStatus("N");
+        }
+        else{
+            setCompletedStatus("Y");
+        }
+    }
+
     return(
-        <div className={styles.elementPreview}
-        onClick={handlePreviewClick}>
-            <div className={styles.removeElement}>
+        <div className={styles.elementPreview}>
+        
+            <div className={styles.leftArea}>
+
+            <div className={styles.removeElement}
+            onClick={handleRemoveClick}>
                 X
             </div>
+            </div>
+            
 
-            <div className={styles.elementText}>
+            <div className={styles.elementText}
+            onClick={handlePreviewClick}>
+            
                 <div>
                     {elementTitle}
                     </div>
             </div>
 
-            <div className={styles.completedSection}>
+            { completedStatus === "Y" ? (
+            <div 
+            onClick={handleCompletedClick}
+            className={styles.completedSectionNo}>
                     <div>
-                        Yes / No
+                        N
                         </div>
             </div>
+            ) : 
+            (
+                <div 
+                onClick={handleCompletedClick}
+                className={styles.completedSectionYes}>
+                        <div>
+                            Y
+                            </div>
+                </div>
+                )}
             
         </div>
     )

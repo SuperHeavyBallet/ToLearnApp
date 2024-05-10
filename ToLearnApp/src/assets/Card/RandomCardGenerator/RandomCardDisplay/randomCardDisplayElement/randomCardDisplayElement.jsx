@@ -4,17 +4,16 @@ export default function RandomCardDisplayElement({elementTitle, cardDetails}){
     
     function handlePreviewClick()
     {
-        console.log(cardDetails);
+        console.log(cardDetails[0]);
     }
 
     return(
         <div className={styles.elementPreview}
-            onClick={handlePreviewClick}
-        >
-            <div className={styles}>
+        onClick={handlePreviewClick}>
+            <div className={styles.removeElement}>
                 X
             </div>
-            
+
             <div className={styles.elementText}>
                 <div>
                     {elementTitle}
@@ -27,6 +26,6 @@ export default function RandomCardDisplayElement({elementTitle, cardDetails}){
                         </div>
             </div>
             
-            </div>
+        </div>
     )
 }

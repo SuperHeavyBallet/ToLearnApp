@@ -15,8 +15,15 @@
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.301);
     align-items: center;
     justify-content: space-between;
-    
+    padding: 0;
 
+}
+
+.leftArea{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    height: 100%;
 }
 
 .elementText{
@@ -33,13 +40,22 @@
 }
 
 .removeElement{
-    background-color: red;
+    
     padding: 0.3vh 0.5vw;
 
     margin: 0;
-    height: 100%;
 }
 
-.completedSection{
+.completedSectionYes{
     padding: 0.3vh 0.5vw;
+    background-color: green;
+}
+.completedSectionNo{
+    padding: 0.3vh 0.5vw;
+    background-color: red;
+}
+.completedSectionYes:hover,
+.completedSectionNo:hover
+{
+    cursor: pointer;
 }
