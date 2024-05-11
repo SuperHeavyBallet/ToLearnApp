@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 export default function VerticalList({listTitle, inputArray, onRemoveCard, onToggleCompleted})
 {
 
+    //console.log("Lust Tutke:" , listTitle);
+    //console.log("Input: " , inputArray);
+
     const [ listElementCount, setListElementCount ] = useState(3);
 
     function handleRemoveCard(cardId)
@@ -16,6 +19,7 @@ export default function VerticalList({listTitle, inputArray, onRemoveCard, onTog
     function handleToggleCompleted(cardId)
     {
         onToggleCompleted(cardId);
+        console.log("Clicked Toggle at List: ", cardId)
     }
 
     return(
@@ -27,7 +31,7 @@ export default function VerticalList({listTitle, inputArray, onRemoveCard, onTog
             <div>
                 {inputArray.map((element, index) => (
                 <div
-                    key={element.id}>
+                    key={element.key}>
                         <ListElementPreview 
                 
 

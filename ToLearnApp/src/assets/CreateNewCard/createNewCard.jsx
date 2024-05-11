@@ -53,12 +53,12 @@ export default function CreateNewCard( {
 
         // Create New Card with input values at time of submit
         const newCard = {
-            id: uuidv4(),
-            time,
-            completed,
-            title,
-            priority,
-            text,
+            key: uuidv4(),
+            time: time,
+            completed: completed,
+            title: title,
+            priority: priority,
+            text: text,
         };
 
 
@@ -128,7 +128,7 @@ export default function CreateNewCard( {
             }
         }
 
-        onChangeCompleted(cardId, card);
+        onChangeCompleted(cardId);
        
         sortCompletedCards();
     }
@@ -171,22 +171,7 @@ export default function CreateNewCard( {
     return (
         <div className={styles.wholePage}>
             
-            {/* Priority List*
-            <div className={styles.listOfCards}>
-                
-                
-                <CardTitleArray listTitle={"High Priority"} inputArray={highPriorityCards}/>
-                
-                <CardTitleArray listTitle={"Low Priority"} inputArray={lowPriorityCards}/>
-            </div>
 
-             {/* Completed Card List
-            <div className={styles.completedCardList}>
-                
-                {/*All Cards 
-                <CardTitleArray listTitle={"Completed"} inputArray={completedCards}/>
-            </div>
-            */}
 
             {/* New Card Form*/}
             <div className={styles.newCardForm}>
@@ -263,37 +248,6 @@ export default function CreateNewCard( {
                 </form>
                 </div>
 
-                {/* Render Each Card 
-                <div>
-                    {cards.map((card) => (
-                        <Card 
-                        key={card.id}
-                        timeCreated={card.time}
-                        cardCompleted={card.completed}
-                        cardTitle={card.title}
-                        onChangeTitle={(newTitle) => changeTitle(card.id, newTitle)}
-                        cardPriority={card.priority}
-                        cardText={card.text}
-                        onRemove={() => removeCard(card.id)}
-                        onChangePriority={(priorityLevel) =>
-                            changePriorityStatus(card.id, card, priorityLevel)
-                        }
-                        onChangeCompleted={() => 
-                            changeCompletedStatus(card.id, card)
-                        }
-                        
-                        />
-                    ))}
-                </div>
-                */}
-
-        {/* Return Random Card
-        <div className={styles.randomCardList}>
-
-
-                <RandomCardGenerator listTitle={"Random Card"} inputArray={cards}></RandomCardGenerator>
-            
-        </div>*/}
              
        
 

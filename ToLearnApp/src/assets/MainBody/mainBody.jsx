@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CreateNewCard from "../CreateNewCard/createNewCard";
 import TopNavBar from "../TopNavBar/topNavBar";
 import VerticalMenu from "../VerticalMenu/verticalMenu";
@@ -21,8 +21,8 @@ export default function MainPage(){
     
 
     useEffect(() => {
-        sortPriorityCards();
         sortCompletedCards();
+  
 
         
     }, [currentCards,  ]);
@@ -62,7 +62,7 @@ export default function MainPage(){
     {
         
 
-        const currentCardToChange = currentCards.filter(card => card.id === cardId);
+        const currentCardToChange = currentCards.filter(card => card.key === cardId);
 
         if (currentCardToChange[0])
         {
@@ -70,12 +70,12 @@ export default function MainPage(){
             if(currentCardToChange[0].completed === 'Completed')
             {
                 setCompletedCards(prevCards => [currentCardToChange[0], ...prevCards]);
-                setNotCompletedCards(prevCards => prevCards.filter(card => card.id !== cardId));
+                setNotCompletedCards(prevCards => prevCards.filter(card => card.key !== cardId));
             }
             else if (currentCardToChange[0].completed === 'Not Completed')
             {
                 setNotCompletedCards(prevCards => [currentCardToChange[0], ...prevCards]);
-                setCompletedCards(prevCards => prevCards.filter(card => card.id !== cardId));
+                setCompletedCards(prevCards => prevCards.filter(card => card.key !== cardId));
             }
         }
 
@@ -85,7 +85,7 @@ export default function MainPage(){
     function handlePriorityChange(cardId, priorityLevel)
     {
         
-        const currentCardToChange = currentCards.filter(card => card.id === cardId);
+        const currentCardToChange = currentCards.filter(card => card.key === cardId);
         if (currentCardToChange[0]){
             if (currentCardToChange[0].priority === "High" && priorityLevel !== "High")
             {
@@ -121,11 +121,11 @@ export default function MainPage(){
         
         console.log("Clicked Remove at Main Level" + cardId);
         
-        setCurrentCards(prevCards => prevCards.filter(card => card.id !== cardId));
-        setCompletedCards(prevCards => prevCards.filter(card => card.id !== cardId));
-        setNotCompletedCards(prevCards => prevCards.filter(card => card.id !== cardId));
-        setHighPriorityCards(prevCards => prevCards.filter(card => card.id !== cardId));
-        setLowPriorityCards(prevCards => prevCards.filter(card => card.id !== cardId));
+        setCurrentCards(prevCards => prevCards.filter(card => card.key !== cardId));
+        setCompletedCards(prevCards => prevCards.filter(card => card.key !== cardId));
+        setNotCompletedCards(prevCards => prevCards.filter(card => card.key !== cardId));
+        setHighPriorityCards(prevCards => prevCards.filter(card => card.key !== cardId));
+        setLowPriorityCards(prevCards => prevCards.filter(card => card.key !== cardId));
         sortPriorityCards();
         sortCompletedCards();
     }
@@ -141,7 +141,7 @@ export default function MainPage(){
     function handleToggleCompleted(cardId)
     {
         console.log("Received Toggle at Main for: ", cardId)
-        const currentCardToChange = currentCards.filter(card => card.id === cardId);
+        const currentCardToChange = currentCards.filter(card => card.key === cardId);
 
         console.log("Card to change: ", currentCardToChange[0]);
 

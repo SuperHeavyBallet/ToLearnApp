@@ -13,14 +13,14 @@ export default function ListElementPreview({elementTitle, cardDetails, onRemoveC
 
     function handleRemoveClick()
     {
-        onRemoveCard(cardDetails.id);
+        onRemoveCard(cardDetails.key);
         console.log("Remove at Card Preview")
     }
 
     function handleCompletedClick()
     {
-        console.log("Competed CLick ", cardDetails.id);
-        onToggleCompleted(cardDetails.id);
+        console.log("Competed CLick ", cardDetails.key);
+        onToggleCompleted(cardDetails.key);
         if (completedStatus === 'Y')
         {
             setCompletedStatus("N");
