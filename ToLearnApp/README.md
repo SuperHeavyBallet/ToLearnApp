@@ -3,14 +3,18 @@
 
 Today todo:
 
+- On Creation of new card, completed and not completed are being sorted into the wrong list
+- There is some weird bug - On initial creation the card goes to one list then immediately reloads into the other (Not Completed > Completed, not vice versa)
+
 card area
+- Handle llocal storage for cards in list
 - Generate Random Card on inital component mount
 - Design more extensive preview for random card displayed
 
 
 - Adjust Completed/Not Completed to something more logical, maybe 'learnt' / 'still learning'
 
-- Add Counters for total array size in each section
+- `Add Counters for total array size in each section`
 
 ^^ Add Tick box on each card, on tick move to completed, add X box in completed section for each card
 
