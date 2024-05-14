@@ -12,14 +12,13 @@ export default function VerticalList({listTitle, inputArray, onRemoveCard, onTog
 
     function handleRemoveCard(cardId)
     {
-        console.log("Clicked Remove at List Level",  cardId);
+
         onRemoveCard(cardId)
     }
 
     function handleToggleCompleted(cardId)
     {
         onToggleCompleted(cardId);
-        console.log("Clicked Toggle at List: ", cardId)
     }
 
     return(

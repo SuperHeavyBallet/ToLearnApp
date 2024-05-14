@@ -56,6 +56,7 @@ export default function MainPage(){
         const currentCardToChange = currentCards.filter(card => card.key === cardId);
 
         console.log("HEY!" , currentCardToChange);
+        console.log(currentCardToChange[0]);
 
         if (currentCardToChange[0])
         {
@@ -124,12 +125,7 @@ export default function MainPage(){
         console.log("Clicked Remove at Main Level" + cardId);
         
         setCurrentCards(prevCards => prevCards.filter(card => card.key !== cardId));
-        setCompletedCards(prevCards => prevCards.filter(card => card.key !== cardId));
-        setNotCompletedCards(prevCards => prevCards.filter(card => card.key !== cardId));
-        setHighPriorityCards(prevCards => prevCards.filter(card => card.key !== cardId));
-        setLowPriorityCards(prevCards => prevCards.filter(card => card.key !== cardId));
-        sortPriorityCards();
-        sortCompletedCards();
+    
     }
 
     
@@ -180,21 +176,23 @@ export default function MainPage(){
                     inputArray={notCompletedCards}
                     onRemoveCard={(cardId) => handleRemoveCard(cardId)}
                     onToggleCompleted={(cardId) => handleCompletedChange(cardId)}
+                    
                 />
                 <div className={styles.multiVerticalMenu}>
 
                 
-
+                <RandomCardGenerator 
+                    inputArray={notCompletedCards}
+                    onRandomCardGenerated={(newRandomCard) => handleNewRandomCard(newRandomCard)}
+                />
+                
                 <RandomCardDisplay 
                     listTitle="Random Card"
                     elementTitle={randomCardTitle}
                     inputArray={randomCard}
                 />
 
-                <RandomCardGenerator 
-                    inputArray={notCompletedCards}
-                    onRandomCardGenerated={(newRandomCard) => handleNewRandomCard(newRandomCard)}
-                />
+                
               
                 </div>
             </div>

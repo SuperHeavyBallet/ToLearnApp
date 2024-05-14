@@ -1,10 +1,13 @@
 import styles from "./listElementPreview.module.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ListElementPreview({elementTitle, cardDetails, onRemoveCard, onToggleCompleted})
 {
-    const [ completedStatus, setCompletedStatus ] = useState( cardDetails.completed === "Completed" ? "N" : "Y");
+    const [ completedStatus, setCompletedStatus ] = useState( cardDetails.completed === "Completed" ? "Y" : "N");
 
+    useEffect(() => {
+        setCompleted();
+    },[completedStatus])
 
     function handlePreviewClick()
     {
@@ -14,19 +17,24 @@ export default function ListElementPreview({elementTitle, cardDetails, onRemoveC
     function handleRemoveClick()
     {
         onRemoveCard(cardDetails.key);
-        console.log("Remove at Card Preview")
     }
 
     function handleCompletedClick()
     {
-        console.log("Competed CLick ", cardDetails.key);
+
         onToggleCompleted(cardDetails.key);
-        if (completedStatus === 'Y')
+       setCompleted();
+    }
+
+    function setCompleted()
+    {
+        if (cardDetails.completed === "Completed")
+        {
+            setCompletedStatus("Y");
+        }
+        else
         {
             setCompletedStatus("N");
-        }
-        else{
-            setCompletedStatus("Y");
         }
     }
 
