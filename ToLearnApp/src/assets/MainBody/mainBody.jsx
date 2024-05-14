@@ -9,7 +9,20 @@ import RandomCardDisplay from "../Card/RandomCardGenerator/RandomCardDisplay/ran
 
 export default function MainPage(){
 
-    const [ currentCards, setCurrentCards ] = useState([]);
+    const savedCards = () => {
+        const cards = localStorage.getItem('currentCards');
+        if (cards) {
+            try {
+                return JSON.parse(cards);
+            } catch (e) {
+                console.error("Error parsing cards from localStorage:", e);
+                return [];  // Return an empty array or default value if there's an error
+            }
+        }
+        return [];  // Return an empty array if there's no item in localStorage
+    }
+
+    const [ currentCards, setCurrentCards ] = useState(savedCards);
 
     const [ completedCards, setCompletedCards ] = useState([]);
     const [ notCompletedCards, setNotCompletedCards ] = useState([]);
@@ -21,63 +34,50 @@ export default function MainPage(){
     
 
     useEffect(() => {
+
         sortCompletedCards();
-  
+        sortPriorityCards();
+        localStorage.setItem('currentCards', JSON.stringify(currentCards));
+       
 
         
-    }, [currentCards,  ]);
+    }, [currentCards ]);
 
     function handleNewCard(newCard)
     {
         if(newCard)
         {
             setCurrentCards(prevCards => [newCard, ...prevCards]);
-
-
-            if (newCard.priority === 'High') {
-                setHighPriorityCards(prevCards => [newCard, ...prevCards]);
-            }
-            else if (newCard.priority === 'Low'){
-                setLowPriorityCards(prevCards => [newCard, ...prevCards]);
-            }
-
-            if (newCard.completed)
-            {
-
-                if (newCard.completed === "Completed")
-                {
-                    setCompletedCards(prevCards => [newCard, ...prevCards]);
-                }
-                else
-                {
-                    setNotCompletedCards(prevCards => [newCard, ...prevCards]);
-                }
-            }
-            
-            
         }
     }
 
-    function handleCompletedChange(cardId, card)
+    function handleCompletedChange(cardId)
     {
-        
-
         const currentCardToChange = currentCards.filter(card => card.key === cardId);
+
+        console.log("HEY!" , currentCardToChange);
 
         if (currentCardToChange[0])
         {
-            console.log("Ready To Change");
             if(currentCardToChange[0].completed === 'Completed')
             {
-                setCompletedCards(prevCards => [currentCardToChange[0], ...prevCards]);
-                setNotCompletedCards(prevCards => prevCards.filter(card => card.key !== cardId));
+
+                currentCardToChange[0].completed = 'Not Completed';
+
             }
             else if (currentCardToChange[0].completed === 'Not Completed')
             {
-                setNotCompletedCards(prevCards => [currentCardToChange[0], ...prevCards]);
-                setCompletedCards(prevCards => prevCards.filter(card => card.key !== cardId));
+                currentCardToChange[0].completed = 'Completed';
+
             }
+
         }
+
+        const updatedCards = currentCards.map(card =>
+            card.id === cardId ? { ...card, completed: card.completed === "Completed" ? "Not Completed" : "Completed" } : card
+        );
+
+        setCurrentCards(updatedCards);
 
     }
 
@@ -86,6 +86,7 @@ export default function MainPage(){
     {
         
         const currentCardToChange = currentCards.filter(card => card.key === cardId);
+        
         if (currentCardToChange[0]){
             if (currentCardToChange[0].priority === "High" && priorityLevel !== "High")
             {
@@ -96,7 +97,7 @@ export default function MainPage(){
             
         }
 
-        sortPriorityCards();
+       
         
     }
 
@@ -108,8 +109,9 @@ export default function MainPage(){
     }
 
     function sortCompletedCards(){
-        const newCompletedCards = currentCards.filter(card => card.completed === 'Completed');
-        const newNotCompletedCards = currentCards.filter(card => card.completed !== 'Completed');
+
+        const newCompletedCards = currentCards.filter(card => card.completed === "Not Completed");
+        const newNotCompletedCards = currentCards.filter(card => card.completed === "Completed");
         setCompletedCards(newCompletedCards);
         setNotCompletedCards(newNotCompletedCards);
     
@@ -130,6 +132,8 @@ export default function MainPage(){
         sortCompletedCards();
     }
 
+    
+
     function handleNewRandomCard(newRandomCard)
     {
         setRandomCard([newRandomCard]);
@@ -138,25 +142,6 @@ export default function MainPage(){
         
     }
 
-    function handleToggleCompleted(cardId)
-    {
-        console.log("Received Toggle at Main for: ", cardId)
-        const currentCardToChange = currentCards.filter(card => card.key === cardId);
-
-        console.log("Card to change: ", currentCardToChange[0]);
-
-        if (currentCardToChange[0].completed === "Completed")
-        {
-            currentCardToChange[0].completed = "Not Completed";
-        }
-        else
-        {
-            currentCardToChange[0].completed = "Completed";
-        }
-
-        handleCompletedChange(cardId);
-        console.log("Current: ", currentCardToChange[0]);
-    }
 
     return(
         <div className={styles.allContent}>
@@ -170,16 +155,16 @@ export default function MainPage(){
                 <CreateNewCard 
                     onNewCard={handleNewCard}
 
-                    onChangeCompleted={(cardId, completedStatus) => handleCompletedChange(cardId, completedStatus)}
+                    
                     onChangePriority={(cardId, priorityLevel) => handlePriorityChange(cardId, priorityLevel)}
-                    onRemoveCard={(cardId) => handleRemoveCard(cardId)}
+                   
                     />
 
                 <VerticalList 
                     listTitle="All"
                     inputArray={currentCards}
                     onRemoveCard={(cardId) => handleRemoveCard(cardId)}
-                    onToggleCompleted={(cardId) => handleToggleCompleted(cardId)}
+                    onToggleCompleted={(cardId) => handleCompletedChange(cardId)}
                     
                 />
 
@@ -187,14 +172,14 @@ export default function MainPage(){
                     listTitle="Completed"
                     inputArray={completedCards}
                     onRemoveCard={(cardId) => handleRemoveCard(cardId)}
-                    onToggleCompleted={(cardId) => handleToggleCompleted(cardId)}
+                    onToggleCompleted={(cardId) => handleCompletedChange(cardId)}
                 />
 
                 <VerticalList
                     listTitle="Not Completed"
                     inputArray={notCompletedCards}
                     onRemoveCard={(cardId) => handleRemoveCard(cardId)}
-                    onToggleCompleted={(cardId) => handleToggleCompleted(cardId)}
+                    onToggleCompleted={(cardId) => handleCompletedChange(cardId)}
                 />
                 <div className={styles.multiVerticalMenu}>
 

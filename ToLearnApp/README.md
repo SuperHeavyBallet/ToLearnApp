@@ -3,11 +3,13 @@
 
 Today todo:
 
-- On Creation of new card, completed and not completed are being sorted into the wrong list
-- There is some weird bug - On initial creation the card goes to one list then immediately reloads into the other (Not Completed > Completed, not vice versa)
+`- On Creation of new card, completed and not completed are being sorted into the wrong list`
+`- There is some weird bug - On initial creation the card goes to one list then immediately reloads into the other (Not Completed > Completed, not vice versa)`
+
+- Changing completed status via completed/not complted list card updates the all list card's completed icon, but not if you update via the all. Sub list updates parent list, parent list does not update sub list
 
 card area
-- Handle llocal storage for cards in list
+- `Handle llocal storage for cards in list`
 - Generate Random Card on inital component mount
 - Design more extensive preview for random card displayed
 

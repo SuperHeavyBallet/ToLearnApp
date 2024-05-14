@@ -7,7 +7,7 @@ import RandomCardGenerator from "../Card/RandomCardGenerator/randomCardGenerator
 
 export default function CreateNewCard( {
     onNewCard, 
-    onChangeCompleted,
+    //onChangeCompleted,
     onChangePriority, 
     onRemoveCard})
 {
@@ -63,7 +63,7 @@ export default function CreateNewCard( {
 
 
         onNewCard(newCard);
-        onChangeCompleted(newCard.id, newCard.completed)
+        //onChangeCompleted(newCard.id, newCard.completed)
         //Add new card to the start of the array
         setCards(prevCards => [newCard, ...prevCards]);
         sortPriorityCards();
@@ -128,7 +128,7 @@ export default function CreateNewCard( {
             }
         }
 
-        onChangeCompleted(cardId);
+        //onChangeCompleted(cardId);
        
         sortCompletedCards();
     }
